@@ -46,7 +46,7 @@ const Nav = () => {
       </ReactModal>
       <nav>
         {getMobileMenu()}
-        <strong>SuperForum</strong>
+        <strong>miniSocialNetwork</strong>
       </nav>
     </React.Fragment>
   );
