@@ -58,13 +58,7 @@ export const login = async (
       messages: [userNotFound(userName)],
     };
   }
-/*
-  if (!user.confirmed) {
-    return {
-      messages: ["User has not confirmed their registration email yet."],
-    };
-  }
-*/
+
   const passwordMatch = await bcrypt.compare(password, user?.password);
   if (!passwordMatch) {
     return {
@@ -105,13 +99,7 @@ export const me = async (id: string): Promise<UserResult> => {
       messages: ["User not found."],
     };
   }
-/*
-  if (!user.confirmed) {
-    return {
-      messages: ["User has not confirmed their registration email yet."],
-    };
-  }
-*/
+
   user.password = "";
   return {
     user: user,
@@ -129,11 +117,7 @@ export const changePassword = async (
   if (!user) {
     return "User not found.";
   }
-/*
-  if (!user.confirmed) {
-    return "User has not confirmed their registration email yet.";
-  }
-*/
+
   const salt = await bcrypt.genSalt(saltRounds);
   const hashedPassword = await bcrypt.hash(newPassword, salt);
   user.password = hashedPassword;
