@@ -60,42 +60,46 @@ const Registration = () => {
 
   return (
     <>
-      <form>
-        <div className="reg-inputs">
-          <div>
-            <label>username</label>
-            <input type="text" value={userName} onChange={onChangeUserName} />
+      <div className="form-container">
+        <form>
+          <div className="reg-inputs">
+            <div>
+              <label>username</label>
+              <input type="text" value={userName} onChange={onChangeUserName} />
+            </div>
+            <div>
+              <label>email</label>
+              <input type="text" value={email} onChange={onChangeEmail} />
+            </div>
+            <div>
+              <PasswordComparison
+                dispatch={dispatch}
+                password={password}
+                passwordConfirm={passwordConfirm}
+              />
+            </div>
           </div>
-          <div>
-            <label>email</label>
-            <input type="text" value={email} onChange={onChangeEmail} />
-          </div>
-          <div>
-            <PasswordComparison
-              dispatch={dispatch}
-              password={password}
-              passwordConfirm={passwordConfirm}
-            />
-          </div>
-        </div>
-        <div className="form-buttons">
-          <div className="form-btn-left">
-            <button
-              style={{ marginLeft: ".5em" }}
-              className="action-btn"
-              disabled={isSubmitDisabled}
-              onClick={onClickRegister}
-            >
-              Register
-            </button>
+          <div className="form-buttons">
+            <div className="form-btn-left">
+              <button
+                style={{ marginLeft: ".5em" }}
+                className="action-btn"
+                disabled={isSubmitDisabled}
+                onClick={onClickRegister}
+              >
+                Register
+              </button>
 
+            </div>
+            <div className="form-valid-message">
+              <span>
+               {resultMsg}
+              </span>
+            </div>
           </div>
-          <span className="form-btn-right">
-            <strong>{resultMsg}</strong>
-          </span>
-        </div>
-      </form>
-    </ >
+        </form>
+      </div>
+    </>
   );
 };
 
