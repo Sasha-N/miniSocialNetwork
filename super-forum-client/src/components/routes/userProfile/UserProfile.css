@@ -17,7 +17,8 @@
 .user-description {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly
+  justify-content: space-evenly;
+  margin-left: 10px;
 }
 
 .userprofile-container {

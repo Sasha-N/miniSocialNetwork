@@ -144,7 +144,7 @@ const UserProfile = () => {
           </>
         </div>
       </div></div> : <div className="screen-root-container"><div className="profile-container">
-        <div className="photo"></div><div className="user-description">
+        <div className="photo"></div><div className="user-description"> Welcome to the new mini-social network, if you are here for the first time, then you should register and login.
         </div></div>
     </div>
   )
