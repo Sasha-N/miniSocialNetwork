@@ -20,7 +20,6 @@ import {
 } from "../repo/ThreadRepo";
 import { User } from "../repo/User";
 import {
-  changePassword,
   login,
   logout,
   me,
@@ -304,13 +303,13 @@ const resolvers: IResolvers = {
     },
     register: async (
       obj: any,
-      args: { email: string; userName: string; password: string },
+      args: { email: string; userName: string; password: string; description: string },
       ctx: GqlContext,
       info: any
     ): Promise<string> => {
       let user: UserResult;
       try {
-        user = await register(args.email, args.userName, args.password);
+        user = await register(args.email, args.userName, args.password, args.description);
         if (user && user.user) {
           return "Registration successful.";
         }
@@ -354,26 +353,6 @@ const resolvers: IResolvers = {
           }
           console.log("session destroyed", ctx.req.session?.userId);
         });
-        return result;
-      } catch (ex) {
-        throw ex;
-      }
-    },
-    changePassword: async (
-      obj: any,
-      args: { newPassword: string },
-      ctx: GqlContext,
-      info: any
-    ): Promise<string> => {
-      try {
-        if (!ctx.req.session || !ctx.req.session!.userId) {
-          return "You must be logged in before you can change your password.";
-        }
-        let result = await changePassword(
-          ctx.req.session!.userId,
-          args.newPassword
-        );
-
         return result;
       } catch (ex) {
         throw ex;

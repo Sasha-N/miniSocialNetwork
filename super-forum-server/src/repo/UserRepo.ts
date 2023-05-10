@@ -12,7 +12,8 @@ export class UserResult {
 export const register = async (
   email: string,
   userName: string,
-  password: string
+  password: string,
+  description: string
 ): Promise<UserResult> => {
   const result = isPasswordValid(password);
   if (!result.isValid) {
@@ -38,6 +39,7 @@ export const register = async (
     email: trimmedEmail,
     userName,
     password: hashedPassword,
+    description
   }).save();
 
   userEntity.password = ""; // blank out for security
@@ -65,7 +67,7 @@ export const login = async (
       messages: ["Password is invalid."],
     };
   }
-
+  console.log(user)
   return {
     user: user,
   };
@@ -104,25 +106,6 @@ export const me = async (id: string): Promise<UserResult> => {
   return {
     user: user,
   };
-};
-
-export const changePassword = async (
-  id: string,
-  newPassword: string
-): Promise<string> => {
-  const user = await User.findOne({
-    where: { id },
-  });
-
-  if (!user) {
-    return "User not found.";
-  }
-
-  const salt = await bcrypt.genSalt(saltRounds);
-  const hashedPassword = await bcrypt.hash(newPassword, salt);
-  user.password = hashedPassword;
-  user.save();
-  return "Password changed successfully.";
 };
 
 function userNotFound(userName: string) {

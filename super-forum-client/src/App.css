@@ -66,7 +66,7 @@ input[type="submit"]:hover {
 }
 
 .action-btn {
-  background-color: skyblue;
+  background-color: #3794ff;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -75,6 +75,10 @@ input[type="submit"]:hover {
   cursor: pointer;
   font-weight: bold;
   font-size: var(--md-font-size);
+}
+
+.action-btn:disabled {
+  background-color: skyblue;
 }
 
 .cancel-btn {

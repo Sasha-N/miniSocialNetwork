@@ -27,12 +27,17 @@ export class User extends Auditable {
   })
   userName: string;
 
+  @Column("varchar", {
+    name: "Description",
+    length: 500,
+    unique: false,
+    nullable: true,
+  })
+  description: string;
+
   @Column("varchar", { name: "Password", length: 100, nullable: false })
   @Length(8, 100)
   password: string;
-
-  @Column("boolean", { name: "Confirmed", default: false, nullable: false })
-  confirmed: boolean;
 
   @Column("boolean", { name: "IsDisabled", default: false, nullable: false })
   isDisabled: boolean;

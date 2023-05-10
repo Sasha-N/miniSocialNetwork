@@ -11,8 +11,8 @@ const typeDefs = gql`
     id: ID!
     email: String!
     userName: String!
+    description: String!
     password: String!
-    confirmed: Boolean!
     isDisabled: Boolean!
     threads: [Thread!]
     threadItems: [ThreadItem!]
@@ -122,12 +122,12 @@ const typeDefs = gql`
       body: String!
     ): EntityResult
     createThreadItem(userId: ID!, threadId: ID!, body: String): EntityResult
-    register(email: String!, userName: String!, password: String!): String!
+    register(email: String!, userName: String!, password: String!, description: String!): String!
     login(userName: String!, password: String!): String!
     logout(userName: String!): String!
     updateThreadPoint(threadId: ID!, increment: Boolean!): String!
     updateThreadItemPoint(threadItemId: ID!, increment: Boolean!): String!
-    changePassword(newPassword: String!): String!
+    changeDescription(newDescription: String!): String!
   }
 `;
 

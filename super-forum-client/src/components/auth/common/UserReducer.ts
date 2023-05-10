@@ -8,6 +8,8 @@ const userReducer = (state: any, action: any) => {
       return { ...state, passwordConfirm: action.payload };
     case "email":
       return { ...state, email: action.payload };
+    case "description":
+        return { ...state, description: action.payload };
     case "resultMsg":
       return { ...state, resultMsg: action.payload };
     case "isSubmitDisabled":

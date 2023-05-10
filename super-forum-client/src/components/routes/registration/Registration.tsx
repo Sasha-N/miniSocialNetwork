@@ -6,20 +6,21 @@ import PasswordComparison from "../../auth/common/PasswordComparison";
 import { gql, useMutation } from "@apollo/client";
 
 const RegisterMutation = gql`
-  mutation register($email: String!, $userName: String!, $password: String!) {
-    register(email: $email, userName: $userName, password: $password)
+  mutation register($email: String!, $userName: String!, $password: String!, $description: String!) {
+    register(email: $email, userName: $userName, password: $password, description: $description)
   }
 `;
 
 const Registration = () => {
   const [execRegister] = useMutation(RegisterMutation);
   const [
-    { userName, password, email, passwordConfirm, resultMsg, isSubmitDisabled },
+    { userName, password, email, description, passwordConfirm, resultMsg, isSubmitDisabled },
     dispatch,
   ] = useReducer(userReducer, {
     userName: "davec",
     password: "",
     email: "admin@dzhaven.com",
+    description: "",
     passwordConfirm: "",
     resultMsg: "",
     isSubmitDisabled: true,
@@ -36,7 +37,11 @@ const Registration = () => {
     if (!e.target.value) allowSubmit(dispatch, "Email cannot be empty", true);
     else allowSubmit(dispatch, "", false);
   };
-
+  const onChangeDescription = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch({ payload: e.target.value, type: "description" });
+    if (!e.target.value) allowSubmit(dispatch, "Description cannot be empty", true);
+    else allowSubmit(dispatch, "", false);
+  };
   const onClickRegister = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
@@ -47,10 +52,11 @@ const Registration = () => {
         variables: {
           email,
           userName,
-          password,
+          description,
+          password
         },
       });
-      console.log("register result", result);
+      console.log("register result", result, password, description, email);
       dispatch({ payload: result.data.register, type: "resultMsg" });
     } catch (ex) {
       console.log(ex);
@@ -70,6 +76,10 @@ const Registration = () => {
             <div>
               <label>email</label>
               <input type="text" value={email} onChange={onChangeEmail} />
+            </div>
+            <div>
+              <label>tell us about yourself</label>
+              <input type="text" value={description} onChange={onChangeDescription} />
             </div>
             <div>
               <PasswordComparison
@@ -93,7 +103,7 @@ const Registration = () => {
             </div>
             <div className="form-valid-message">
               <span>
-               {resultMsg}
+                {resultMsg}
               </span>
             </div>
           </div>
