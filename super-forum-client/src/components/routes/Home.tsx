@@ -4,6 +4,7 @@ import SideBar from "../areas/sidebar/SideBar";
 import LeftMenu from "../areas/LeftMenu";
 import Main from "../areas/main/Main";
 import RightMenu from "../areas/rightMenu/RightMenu";
+import UserProfile from "../routes/userProfile/UserProfile";
 import "./Home.css";
 
 const Home: FC = () => {
@@ -11,6 +12,9 @@ const Home: FC = () => {
     <div className="screen-root-container home-container">
       <div className="navigation">
         <Nav />
+      </div>
+      <div className="profile">
+        <UserProfile />
       </div>
       <SideBar />
       <LeftMenu />
