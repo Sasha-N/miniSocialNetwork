@@ -66,6 +66,17 @@
   margin-bottom: 1em;
 }
 
+.action-button-link a:-webkit-any-link {
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.action-button-link {
+  margin-left: 5px;
+
+}
+
 @media screen and (orientation: portrait) and (max-width: 768px) {
   .thread-content-container {
     grid-template-columns: 1fr;

@@ -18,6 +18,7 @@ import Category from "../../../models/Category";
 import { Node } from "slate";
 import { getTextFromNodes } from "../../editor/RichEditor";
 import ThreadResponse from "./ThreadResponse";
+import { Link } from "react-router-dom";
 
 const GetThreadById = gql`
   query GetThreadById($id: ID!) {
@@ -260,6 +261,9 @@ const Thread = () => {
               <div style={{ marginTop: ".5em" }}>
                 <button className="action-btn" onClick={onClickPost}>
                   Post
+                </button>
+                <button className="action-btn action-button-link">
+                  <Link to={`/`}>Back</Link>
                 </button>
               </div>
               <strong>{postMsg}</strong>
