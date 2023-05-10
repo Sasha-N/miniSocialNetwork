@@ -10,7 +10,7 @@ const LeftMenu = () => {
   const categoriesState = useSelector((state: AppState) => state.categories);
   const { width } = useWindowDimensions();
   const [categories, setCategories] = useState<JSX.Element>(
-    <div>Left Menu</div>
+    <div>Here you will see friends!</div>
   );
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const LeftMenu = () => {
   if (width <= 768) {
     return null;
   }
-  return <div className="leftmenu">{categories}</div>;
+  return (<div className="leftmenu"><strong>It's my friends!</strong>{categories}</div>);
 };
 
 export default LeftMenu;
