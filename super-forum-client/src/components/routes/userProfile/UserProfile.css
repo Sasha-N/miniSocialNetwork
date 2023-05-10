@@ -1,3 +1,25 @@
+.photo {
+  min-width: 150px;
+  min-height: 150px;
+  border-radius: 50%;
+  background-color: #3794ff;
+}
+
+.profile-container {
+  padding-top: 0.75em;
+  padding-bottom: 0.75em;
+  padding-left: 1em;
+  padding-right: 1em;
+  display: flex;
+  flex-direction: row;
+}
+
+.user-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly
+}
+
 .userprofile-container {
   margin: 0 auto;
   max-width: 1200px;
